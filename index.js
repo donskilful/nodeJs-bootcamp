@@ -40,27 +40,14 @@ console.log('will read file soon');
 
 */
 
-
 //////////////////////////////////////////////////////////////////////////////////////
 
 // SERVER
 
 const http = require("http");
-const url = require("url");
 // in other to build a server you first need to create the server then start it
 const server = http.createServer((req, res) => {
-  const pathname = req.url;
-  if (pathname === "/" || pathname === "/overview") {
-    res.end("This is the OVERVIEW");
-  } else if (pathname === "/product") {
-    res.end("This is the PRODUCT");
-  } else {
-    res.writeHead(404, {
-      "content-type": "text/html",
-      "my-own-header": "hello world",
-    });
-    res.end("<h1>page not found</h1>");
-  }
+  res.end("Hello from ther Server");
 });
 
 /* we just created our server above and as you can see there is a callback function that is run as soon as a
@@ -70,7 +57,6 @@ are the req and res variable
 and as you can see, our server that was created was actually saved into a variable called server on which we can call
 the listen method on
 */
-
 
 server.listen(8000, "127.0.0.1", () => {
   console.log("listening to requests on port 8000");
