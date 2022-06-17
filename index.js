@@ -63,7 +63,6 @@ server.listen(8000, "127.0.0.1", () => {
 // When routing in a big application we always use Express for that but we could also use the nodejs built in url for basic 
 // and smaller routing
 
-*/
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -87,6 +86,47 @@ const server = http.createServer((req, res) => {
   }
 });
 
+
+server.listen(8000, "127.0.0.1", () => {
+  console.log("listening to requests on port 8000");
+});
+
+
+*/
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+// SIMPLE API
+const fs = require("fs");
+const http = require("http");
+const url = require("url");
+
+   const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8"); // reads file from a spesific directory and saves it in the data variable which is beign rendered at the /api route
+  // const dataObj = JSON.parse(data);
+
+
+const server = http.createServer((req, res) => {
+  const pathname = req.url;
+  if (pathname === "/" || pathname === "/overview") {
+    res.end("This is the OVERVIEW");
+  } else if (pathname === "/product") {
+    res.end("This is the PRODUCT");
+  } else if (pathname === "/api") {
+
+    res.writeHead(200, {
+      "content-type": "application/json",
+    });
+    res.end(data);
+
+
+  } else {
+    res.writeHead(404, {
+      "content-type": "text/html",
+      "my-own-header": "hello world",
+    });
+    res.end("<h1>page not found</h1>");
+  }
+});
 
 server.listen(8000, "127.0.0.1", () => {
   console.log("listening to requests on port 8000");
