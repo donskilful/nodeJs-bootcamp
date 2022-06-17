@@ -92,18 +92,17 @@ server.listen(8000, "127.0.0.1", () => {
 });
 
 
-*/
 
 //////////////////////////////////////////////////////////////////////////////////////
 
 // SIMPLE API
+
 const fs = require("fs");
 const http = require("http");
 const url = require("url");
 
-   const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8"); // reads file from a spesific directory and saves it in the data variable which is beign rendered at the /api route
-  // const dataObj = JSON.parse(data);
-
+const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8"); // reads file from a spesific directory and saves it in the data variable which is beign rendered at the /api route
+// const dataObj = JSON.parse(data);
 
 const server = http.createServer((req, res) => {
   const pathname = req.url;
@@ -112,13 +111,10 @@ const server = http.createServer((req, res) => {
   } else if (pathname === "/product") {
     res.end("This is the PRODUCT");
   } else if (pathname === "/api") {
-
     res.writeHead(200, {
       "content-type": "application/json",
     });
     res.end(data);
-
-
   } else {
     res.writeHead(404, {
       "content-type": "text/html",
@@ -131,3 +127,10 @@ const server = http.createServer((req, res) => {
 server.listen(8000, "127.0.0.1", () => {
   console.log("listening to requests on port 8000");
 });
+
+*/
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+// HTML TEMPLATE
+
