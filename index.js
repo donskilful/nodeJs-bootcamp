@@ -163,7 +163,9 @@ const tempProduct = fs.readFileSync(`${__dirname}/templates/template-product.htm
 const dataObj = JSON.parse(data);
 
 const server = http.createServer((req, res) => {
-  const pathname = req.url;
+
+  const {query, pathname} = url.parse(req.url, true)
+
   // Overview page
   if (pathname === "/" || pathname === "/overview") {
     res.writeHead(200, {
@@ -177,7 +179,12 @@ const server = http.createServer((req, res) => {
 
   // Product page 
   } else if (pathname === "/product") {
-    res.end("This is the PRODUCT");
+    res.writeHead(200, {
+      "content-type": "text/html",
+    });
+    const product = dataObj[query.id];
+    const output = replaceTemplate(tempProduct, product)
+    res.end(output);
 
   // Api
   } else if (pathname === "/api") {
