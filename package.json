@@ -1,0 +1,26 @@
+{
+  "name": "node-farm",
+  "version": "1.0.0",
+  "description": "learning node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/donskilful/nodeJs-bootcamp.git"
+  },
+  "author": "donskilful",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/donskilful/nodeJs-bootcamp/issues"
+  },
+  "homepage": "https://github.com/donskilful/nodeJs-bootcamp#readme",
+  "dependencies": {
+    "global": "^4.4.0",
+    "slugify": "^1.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
